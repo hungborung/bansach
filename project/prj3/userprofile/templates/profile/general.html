@@ -1,0 +1,108 @@
+{% extends "baseacount.html" %}
+{% block title %}
+    Cá nhân
+{% endblock %}
+
+{% block menu %} 
+  {% with page=1 %}
+    {{block.super}}
+  {% endwith %}
+{% endblock %}
+
+{% block accountinfo %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+<style>
+    p{
+        margin-bottom: 0px;
+    }
+</style>
+
+<div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+    <h3>Tài khoản của tôi</h3>
+    <br>
+    <h4 class="title">Thông tin tài khoản</h4>
+    <hr>
+    <div class="contact-info row">
+        <div class="col-md-12">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="col-md-4 img-profile" style="float: left;">
+                    <div style="width: 160px">
+                        <div>
+                            <img src="{{ request.user.get_image }}" alt="">
+                        </div>
+                        <div style="padding-top: 15px; ">   
+                                {{ form.image }} 
+                        </div>
+                        
+                        
+                    </div>
+                    
+                </div>
+                <div class="col-md-8" style="float: left;">
+                    <h5>Thông tin liên hệ</h5>
+                    <div class="info-profile">
+                            <table class="table"> 
+                                <tr>
+                                    <th>Tên đăng nhập:</th>
+                                    <td>
+                                        {{ request.user.username }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Họ</td>
+                                    <td>{{ form.first_name }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Tên</td>
+                                    <td>{{ form.last_name }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Email</td>
+                                    <td>{{ form.email }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Số điện thoại</td>
+                                    <td>{{ form.phone }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Địa chỉ</td>
+                                    <td>{{ form.address }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Mã bưu chính</td>
+                                    <td>{{ form.zipcode }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Địa chỉ chi tiết</td>
+                                    <td>{{ form.place }}</td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <button type="submit" class="btn btn-primary">Lưu</button>
+                                    </td>
+                                </tr>
+                            </table>
+                    </div>
+                    
+                    <span>
+                        <a href="">Edit</a> |
+                        <a href="{% url 'change_password' %}">Change password</a>
+                    </span>
+                    
+                </div>
+            </form>
+        </div>
+      
+       
+    </div>
+    <br>
+</div> 
+<script>
+    $(document).ready(function(){
+    $('.table input').addClass('form-control');
+});
+</script>             
+{% endblock %}

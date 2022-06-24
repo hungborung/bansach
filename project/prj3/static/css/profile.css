@@ -1,0 +1,18 @@
+.img-profile img{
+    padding: .25rem;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: .25rem;
+    max-width: 100%;
+    height: auto;
+}
+.change-image {
+    margin: auto;
+    width: 80%;
+    padding: 10px;
+    
+}
+.change-image a{
+    border: 1px solid #dee2e6;
+    background-color: white;
+}

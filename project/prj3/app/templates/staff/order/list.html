@@ -1,0 +1,115 @@
+{% extends "../base.html" %}
+
+{% block menu %} 
+  {% with page=1 %}
+    {{block.super}}
+  {% endwith %}
+{% endblock %}
+
+
+{% block content %}
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0 text-dark">Orders</h1>
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Orders</li>
+            </ol>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+    <div class="search-option">
+      <form action="" method="POST">
+        {% csrf_token %}
+        <select name='statusId' class="form-control" style="width: 200px">  
+          <option value="">--Chọn Trạng thái--</option>  
+          {% for s in status %}    
+          <option {%if s.id == priceId%}selected{%endif%}
+            value="{{s.id}}">{{s.name}}</option>
+          {% endfor %}   
+        </select>
+
+        <button class="mt-3 btn btn-primary" type="submit">
+          Tìm kiếm
+        </button>
+      </form>
+    </div>
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <!-- Small boxes (Stat box) -->
+        <div class="row">
+          <table class="table">
+            <thead>
+              <tr>
+
+                <th>Mã</th>
+                <th>Khách hàng</th>
+                <th>Ngày mua hàng</th>
+                <th>Tổng tiền</th>
+                <th>Trạng thái</th>
+                <th>Paid</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for o in orders %}
+              <tr>
+
+                <td>#{{ o.id }}</td>
+                <td>{{ o.first_name }} {{ o.last_name }}</td>
+                <td>{{ o.create_at|date:"d/m/Y H:i:s" }}</td>
+                <td>
+                  {{ o.paid_amount }}đ
+                </td>
+                <td>
+                  {% if o.status.id == 1 %} Mới {%endif%}
+                  {% if o.status.id == 2 %} Đã giao hàng {%endif%}
+                  {% if o.status.id == 3 %} Đã hủy {%endif%}
+                </td>
+                <td>
+                  {% if o.paid == False %} Chưa thanh toán {% endif %}
+                  {% if o.paid == True %} Đã thanh toán {% endif %}
+                </td>
+                <td>
+                  <span>
+                    <a href="{% url 'view-order' o.id %}">
+                      <i class="fa fa-eye" aria-hidden="true">Xem</i>
+                    </a>
+
+                  </span>
+                </td>
+              </tr>
+            {% endfor %}
+              
+            </tbody>
+              
+          </table>
+          {% include '../pagination.html' with page=orders %}
+          <span>(Total : {{total}} records)</span>
+          <!-- ./col -->
+          
+        </div>
+        <!-- /.row -->
+        
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+    </div>
+    <script>
+      function deleteCategory(id) {
+      if(confirm('Bạn có chắc chắn muốn xóa?')){
+        location.href = '/staff/delete-category/' + id;
+      }
+    }
+    </script>
+{% endblock %}

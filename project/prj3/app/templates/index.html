@@ -1,0 +1,166 @@
+{% extends "base.html" %}
+
+{% with page=1 %}
+   {{ block.super }}
+ {% endwith %}  
+{% block content %} 
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+
+<link rel="stylesheet" href="{% static 'owlcarousel/assets/owl.carousel.min.css' %}">
+<link rel="stylesheet" href="{% static 'owlcarousel/assets/owl.theme.default.min.css' %}">
+
+<script src="{% static 'owlcarousel/owl.carousel.min.js' %}"></script>
+<script src="{% static 'owlcarousel/owl.carousel.js' %}"></script>
+
+<script src="{% static 'js/index.js' %}"></script>
+
+
+<div class="container">
+    <div class="row custom-menu-homepage">
+        <div class="col-md-3">
+            <div class="category">
+                <div class="category-title">
+                    Danh mục sản phẩm
+                </div>
+                
+                <div class="menu">
+                    <ul class="navbar-nav ml-auto">
+                        {% for c in listCategory %}
+                            <li class="nav-item toggle-on-hover">
+                                {% if not c.children.all %}
+                                    <a class="nav-link" href="{% url 'categorydetail' c.slug %}" ><span>{{ c.name }}</span></a>
+                                {% else %}
+                                    <div class="dropdown dropright">
+                                        <a class="nav-link dropdown-toggle" href="{% url 'categorydetail' c.slug %}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ c.name }}</a>
+                                        <div class="dropdown-menu">
+                                            {% for subcategory in c.children.all %}
+                                                <a href="{% url 'categorydetail' subcategory.slug %}" class="dropdown-item"><span>{{ subcategory.name }}</span></a>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            </li>
+                        {% endfor %}   
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div id="carouselIndicators" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                  <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                  <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                  <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <a href="">
+                        <img class="d-block w-100" src="https://cdn0.fahasa.com/media/magentothem/banner7/920x420_phienchodocu.png" alt="First slide">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>Giảm giá cực mạnh</h5>
+                            <p>Sale off 30%</p>
+                        </div>
+                    </a>
+                    
+                  </div>
+                  <div class="carousel-item">
+                    <a href="">
+                        <img class="d-block w-100" src="https://cdn0.fahasa.com/media/magentothem/banner7/Doraemon_920x420.png" alt="Second slide">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>...</h5>
+                            <p>...</p>
+                        </div>
+                    </a>
+                    
+                  </div>
+                  <div class="carousel-item">
+                    <a href="">
+                        <img class="d-block w-100" src="https://cdn0.fahasa.com/media/magentothem/banner7/bigsaleT1_mainbanner_920x420.jpg" alt="Third slide">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>...</h5>
+                            <p>...</p>
+                        </div>
+                    </a>
+                    
+                  </div>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </div>
+        </div>
+    </div>
+    <div class="main-content pb-4" style="box-shadow: 0 5px 5px rgba(0, 0, 0, 0.15);">
+        <div class="title" style="font-weight: bold; color: #f7941e; font-size: 22px; margin-top: 30px; padding-left: 15px;">
+            Sản phẩm nổi bật
+        </div>
+        <div class="row" style="margin-left: 0px;">
+            <div class="owl-carousel owl-theme clearfix">
+                {% for p in product %}
+                    <div class="product-featured clearfix">
+                        <a href="{% url 'productdetail' p.slug %}" class="product-item" style="text-decoration: none; color: black;">
+                            <div class="img-container">
+                                <img src="{{ p.image.url }}" class="product-image clearfix">
+                            </div>
+                            <div class="product-info">
+                                <div class="product-name">
+                                    <span>{{ p.name }}</span>
+                                </div>
+                                <div class="product-price">
+                                    {% if p.discount > 0 %}
+                                        <span style="color: #f7941e; font-size: 20px; font-weight: bold;">{{ p.price_discount }}</span>
+                                        <del>{{ p.price_sell }}</del>
+                                    {% else %}
+                                        <span  style="color: #f7941e;font-size: 20px; font-weight: bold;">{{ p.price_sell }}</span>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                 {% endfor %}
+               
+            </div>
+            
+        </div>
+        <div class="title" style="font-weight: bold; color: #f7941e; font-size: 22px; margin-top: 30px; padding-left: 15px;">
+            Sản phẩm phổ biến
+        </div>
+        <div class="row" style="margin-left: 0px;">
+            <div class="owl-carousel owl-theme popular-product">
+                {% for p in popular_products %}
+                    <div class="product-popular">
+                        <a href="{% url 'productdetail' p.slug %}" class='product-item' style="text-decoration: None; color: black;">
+                            <div class="img-container" style="text-align: center;">
+                                <img src="{{p.image.url}}" class='product-image clearfix'>
+                            </div>
+                            <div class="item-info">
+                                <div class='product-name'>
+                                    <span >{{p.name}}</span>
+                                </div>
+                                <div>
+                                    {% if p.discount > 0 %}
+                                        <span id="price_discount" style="color: #f7941e; font-size: 20px; font-weight: bold;">{{ p.price_discount }}</span>
+                                        <del class='price'>{{p.price_sell}}₫</del>
+                                    {% else %}
+                                        <span class='price' style="color: #f7941e;font-size: 20px; font-weight: bold;">{{p.price_sell}}₫</span>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                 {% endfor %}
+               
+            </div>
+            
+        </div>
+    </div>
+    
+</div>
+
+{% endblock %}

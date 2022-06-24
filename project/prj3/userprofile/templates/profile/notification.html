@@ -1,0 +1,24 @@
+{% extends "baseacount.html" %}
+{% block title %}
+    Cá nhân
+{% endblock %}
+
+{% block menu %} 
+  {% with page=3 %}
+    {{block.super}}
+  {% endwith %}
+{% endblock %}
+
+{% block accountinfo %}
+{% load static %}
+
+<style>
+    p{
+        margin-bottom: 0px;
+    }
+</style>
+
+<div class="tab-pane fade show active" id="your-order" role="tabpanel" aria-labelledby="home-tab">
+    <h4>Thông báo</h4>
+</div>             
+{% endblock %}

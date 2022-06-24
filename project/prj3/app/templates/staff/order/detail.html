@@ -1,0 +1,146 @@
+<!--app/templates/staff/order/detail.html-->
+<!--app/templates/staff/order.html-->
+{% extends "../base.html" %}
+
+
+
+{% block content %}
+  <div class="content-wrapper pt-3 pl-3" >    
+    <div class="title">
+      <h3>Order & Account information</h3>
+    </div>
+    <div class="information row">
+      <div class="col-md-6">
+        <div class="title">
+          <h4>Order #{{ order.id }}</h4>
+        </div>
+        <table class="table table-striped">
+          <thead>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Price</th>
+          </thead>
+          <tbody>
+            {% for o in orderDetail %}
+              <tr>
+               
+                  <td>{{ o.product.name }}</td>
+                  <td>{{ o.quantity }}</td>
+                  <td>{{ o.price }}</td>
+                
+              </tr>
+              {% endfor %}
+          </tbody>
+          <tfoot>
+              <tr>
+                <td colspan="2" align="right" style="font-weight: bold;">Total cost:</td>
+                <td> {{ order.paid_amount }}</td>
+              </tr>
+              <tr v-if="coupon_value">
+                <td>Used coupon: </td>
+                <td colspan="2">{{ order.used_coupon }}</td>
+              </tr>
+              <tr>
+                <td>
+                  Order date: 
+                </td>
+                <td colspan="2">
+                  {{ order.create_at }}
+                </td>
+              </tr>
+              <tr>
+                <td>Order status</td>
+                <td>
+                  {% if order.status.id == 1 %} Mới {%endif%}
+                  {% if order.status.id == 2 %} Đã giao hàng {%endif%}
+                  {% if order.status.id == 3 %} Đã hủy {%endif%}
+                </td>
+              </tr>
+          </tfoot>
+        </table>
+      </div>
+      <div class="col-md-6" style="padding-left: 40px;">
+        <div class="title">
+          <h4>Account information</h4>
+          <table class="table table-striped">
+            <tr>
+              <td>Tên khách hàng</td>
+              <td>{{ order.first_name }} {{ order.last_name }}</td>
+            </tr>
+            <tr>
+              <td>Số điện thoại</td>
+              <td>{{ order.phone }}</td>
+            </tr>
+            <tr>
+              <td>Email</td>
+              <td>{{ order.email }}</td>
+            </tr>
+            
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="address information">
+      <div class="title">
+        <h3>Adress information</h3>
+        <hr>
+      </div>
+      <div class="row">
+        <div class="col-md-6 pl-3">
+          <div class="title">
+            <h4>Billing address</h4>
+            <div class="infor">
+              <p>{{ order.first_name }} {{ order.last_name }}</p>
+              <p>{{ order.address }}</p>
+              <p>Việt Nam</p>
+              <p>{{ order.phone }}</p>
+              <p>{{ order.payment_intent }}</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 pl-3">
+          <div class="title">
+            <h4>Shipping address</h4>
+            <div class="infor">
+              <p>{{ order.first_name }} {{ order.last_name }}</p>
+              <p>{{ order.address }}</p>
+              <p>Việt Nam</p>
+              <p>{{ order.phone }}</p>
+              <p>{{ order.payment_intent }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+   
+    
+    <div class="mb-3">
+      {% if order.status.id == 1 %}      
+        <a class="btn btn-primary mr-1"
+        href='javascript:confirmOrderDeliver({{order.id}})'>
+          Xác nhận đã giao hàng
+        </a>
+        <a class="btn btn-danger mr-1" 
+          href='javascript:cancelOrder({{order.id}})'>
+          Hủy đơn hàng
+        </a>    
+      {% endif %}
+      <a class="btn btn-secondary"
+       href='/staff/list-order'>Quay lại</a>
+    </div>
+  </div>
+  <script>
+    function confirmOrderDeliver(id) {
+      if(confirm('Xác nhận đơn hàng đã được giao?')) {
+        location.href = '/staff/confirm-order-deliver/' + id;
+      }
+    }
+    function cancelOrder(id) {
+      if(confirm('Hủy đơn hàng này?')) {
+        location.href = '/staff/cancel-order/' + id;
+      }
+    }
+  </script>
+{% endblock %}

@@ -1,0 +1,40 @@
+.product-image {
+    width: 200px;
+  }
+
+  .price-title {
+    font-style: italic;
+    font-size: 14px;
+  }
+
+  .price {
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  .product-item,
+  .product-item:link,
+  .product-item:hover,
+  .product-item:visited {
+    text-decoration: none;
+    color: black;
+  }
+
+  .item-container {
+    position: relative;
+    height: 100%;
+    padding-bottom: 50px;
+  }
+
+  .item-info {
+    position: absolute;
+    bottom: 0px;
+    height: 50px;
+  }
+  .search-product-detail{
+    background-color: white;
+  }
+  .product-cat{
+    background-color: white;
+
+  }

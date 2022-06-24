@@ -1,0 +1,62 @@
+{% extends "baseacount.html" %}
+{% block title %}
+    Cá nhân
+{% endblock %}
+
+{% block menu %} 
+  {% with page=2 %}
+    {{block.super}}
+  {% endwith %}
+{% endblock %}
+
+{% block accountinfo %}
+{% load static %}
+
+<style>
+    p{
+        margin-bottom: 0px;
+    }
+</style>
+
+<div class="tab-pane fade show active" id="your-order" role="tabpanel" aria-labelledby="home-tab">
+    <h4>Đơn hàng của bạn</h4>
+    <div>
+        <p>{{ order.created_at }}</p>
+    </div>
+    <div>
+        <table class="table">
+            <thead>
+                <th>Mã</th>
+                <th>Ngày đặt</th>
+                <th>Địa chỉ</th>
+                <th>Tổng tiền</th>
+                <th>Tình trạng</th>
+                <th></th>
+            </thead>
+            <tbody>
+                {% for order in request.user.orders.all %}
+                   
+                        <tr>
+                            <td>#{{ order.id }}</td>
+                            <td>{{ order.create_at }}</td>
+                            <td>{{ order.address }}</td>
+                            <td>{{ order.paid_amount }}</td>
+                            <td>
+                                {% if order.status.id == 0 %} Mới {%endif%}
+                                {% if order.status.id == 1 %} Đã giao hàng {%endif%}
+                                {% if order.status.id == 2 %} Đã hủy {%endif%}
+                            </td>
+                            <td>
+                                <span>
+                                    <a href="">Xem</a> |
+                                    <a href="">Đặt lại</a>
+                                </span>
+                            </td>
+                        </tr>
+                    
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>   
+</div>             
+{% endblock %}

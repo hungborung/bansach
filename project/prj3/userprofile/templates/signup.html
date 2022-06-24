@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}
+    Signup
+{% endblock %}
+
+{% block content %}
+{% load static %}
+
+
+<div class="card bg-light">
+    <article class="card-body mx-auto" style="max-width: 400px;">
+        <h4 class="card-title mt-3 text-center">Đăng ký tài khoản của bạn</h4>
+        <p class="text-center">Hãy bắt đầu tạo tài khoản miễn phí</p>
+        
+        <form method="POST" novalidate>
+        {% csrf_token %}
+            <div class="signup-form">
+                
+                <p>Tên đăng nhập: {{ form.username }}</p>
+                <p>Email: {{ form.email }}</p>
+                <p>Số điện thoại: {{ form.phone }}</p>
+                <p>Mật khẩu: {{ form.password1 }}</p>
+                <p>Nhập lại mật khẩu: {{ form.password2 }}</p>
+                <p class="text-center">Bạn chưa có tài khoản? <a href="">Đăng nhập</a> </p>    
+                <button type="submit" class="btn btn-primary">Dang nhap</button>   
+            </div>
+           
+        </form>
+    </article>
+</div> <!-- card.// -->
+    
+
+    <!--container end.//-->
+
+<script>
+    $(document).ready(function(){
+    $('.signup-form input').addClass('form-control');
+});
+</script>       
+
+
+
+
+{% endblock %}

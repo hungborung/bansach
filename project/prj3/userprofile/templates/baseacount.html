@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block title %}
+    Account
+{% endblock %}
+
+{% block content %}
+{% load static %}
+
+<style>
+    p{
+        margin-bottom: 0px;
+    }
+    .user-info{
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 0 10px 0px #6c6c78;   
+    }
+    .main{
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+</style>
+
+{% block menu %}
+<div class="wrapper pt-3 pb-3">
+    <div class="container user-info">
+        <div class="main row">
+            <div class="col-md-3">
+                <ul class="nav nav-pills flex-column" id="myTab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link {%if page == 1%} active {%endif%}"  href="{% url 'account' %}" >Cá nhân</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {%if page == 2%} active {%endif%}" href="{% url 'userorder' %}" >Đơn hàng</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {%if page == 3%} active {%endif%}" href="{% url 'notification' %}">Thông báo</a>
+                    </li>
+                  </ul>
+            </div>
+            <div class="col-md-9">
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                        {% block accountinfo %}
+                            
+                        {% endblock %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    
+    
+</div>
+{% endblock %}
+
+{% endblock %}

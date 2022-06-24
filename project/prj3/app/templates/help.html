@@ -1,0 +1,1086 @@
+{% extends "base.html" %}
+
+
+{% block content %} 
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/helplayout.css' %}">
+<link rel="stylesheet" href="{% static 'css/shared-new.css' %}">
+<div id="bb-body">
+
+    <div class="help-layout" >
+        <div class="container">
+            <div class="left-menu hide-responsive" data-spy="affix" data-offset-top="217" data-offset-bottom="600">
+                <div class="sidemenu-box">
+                    <ul class="nav sidebar-menu-new">
+                        <li>
+                            <a href="/gioi-thieu-bookbuy.html">Giới thiệu BookBuy</a>
+                        </li>
+                        <li>
+                            <a href="/cau-hoi-thuong-gap.html">Câu hỏi thường gặp</a>
+                        </li>
+                        <li>
+                            <a href="/Help/Index/#helporder">Hướng dẫn mua hàng</a>
+                        </li>
+                        <li>
+                            <a href="#paymenttype-child" data-toggle="collapse">Phương thức thanh toán</a>  
+                            <div class="children-ul collapse" id="paymenttype-child">
+                                <ul>
+                                    <li>
+                                        <a href="/Help/Index/#paymenttype"><i class="fa fa-hand-o-right"></i> Thanh toán bằng tiền mặt</a>
+                                    </li>
+                                    <li>
+                                        <a href="/Help/Index/#payment-banking"><i class="fa fa-hand-o-right"></i> Thẻ ATM Internet Banking</a>
+                                    </li>
+                                    <li>
+                                        <a href="/Help/Index/#payment-bank"><i class="fa fa-hand-o-right"></i> Chuyển tiền qua ngân hàng</a>
+                                    </li>
+                                    <li>
+                                        <a href="/Help/Index/#payment-onepay"><i class="fa fa-hand-o-right"></i> Cổng thanh toán điện tử</a>
+                                    </li>
+                                    <li>
+                                        <a href="/Help/Index/#payment-visa"><i class="fa fa-hand-o-right"></i> Thẻ Quốc tế / Thẻ nội địa (Moca)</a>
+                                    </li>
+                                </ul>
+                            </div>                      
+                        </li>                   
+                        <li>
+                            <a href="#shippingtype-child" data-toggle="collapse">Phương thức vận chuyển</a>
+                            <div id="shippingtype-child" class="children-ul collapse">
+                                <ul>
+                                    <li>
+                                        <a href="/Help/Index/#shipping-inhcm"><i class="fa fa-hand-o-right"></i> Tại Sài Gòn</a>
+                                    </li>
+                                    <li>
+                                        <a href="/Help/Index/#shipping-office"><i class="fa fa-hand-o-right"></i> Gửi bưu điện đi liên tỉnh</a>
+                                    </li>
+                                    <li>
+                                        <a href="/Help/Index/#shipping-ems"><i class="fa fa-hand-o-right"></i> Chuyển phát nhanh</a>
+                                    </li>
+                                    <li>
+                                        <a href="/Help/Index/#shipping-national"><i class="fa fa-hand-o-right"></i> Chuyển phát quốc tế</a>
+                                    </li>
+                                </ul>
+                            </div>            
+                        </li>
+                        <li>
+                            <a href="/dat-hang-theo-yeu-cau.html">Đặt hàng theo yêu cầu</a>
+                        </li>
+                        <li>
+                            <a href="/lien-he.html">Liên hệ</a>
+                        </li>
+                        <li>
+                            <a href="/form-doi-tra.html">Phiếu đăng ký đổi/ trả hàng</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="right-content" >
+                
+    
+    <div class="help-index">
+        <h3 id="helporder">HƯỚNG DẪN MUA HÀNG</h3>
+        <p class="img-box">
+            <img src="{% static 'images/local/info-dat-hang-bookbuy.png' %}" />
+        </p>
+        
+    
+        <h3 id="paymenttype">PHƯƠNG THỨC THANH TOÁN</h3>
+        <h4>
+            1. Thanh toán bằng tiền mặt - COD
+        </h4>
+        <p>
+            Thanh toán bằng tiền mặt là hình thức trả tiền cho nhân viên giao hàng khi nhận hàng, phù hợp với khách hàng có thói quen dùng tiền mặt để chi trả khi mua sắm. (Áp dụng cho mọi đơn hàng có giá trị dưới 1,000,000đ ).
+        </p>
+        <p>
+            Đối với khách hàng tại Sài Gòn, với các đơn hàng từ 100,000đ hay 150,000đ (tuỳ địa điểm nhận hàng, xem thêm: <a style="color: #428bca" href="/Help/Index#shipping-inhcm"> //bookbuy.vn/Help/Index#shipping-inhcm </a>), Quý khách sẽ được miễn phí vận chuyển và chỉ thanh toán số tiền bằng đúng giá trị đơn hàng. Đơn hàng có giá trị dưới mức này, vui lòng tham khảo <a style="color: #428bca" href="/Help/Index/#shipping-inhcm"> Phí vận chuyển tại Sài Gòn</a>.
+        </p>
+        <p>
+            Đối với khách hàng ở các tỉnh thành khác, các đơn hàng từ 250,000đ được miễn phí vận chuyển. Bên cạnh đó sẽ phát sinh phí thu tiền hộ (phí COD) do bưu điện quy định. Bảng phí như bên dưới:
+        </p>
+    
+        <div style="width:600px; margin:0 auto">
+            <table>
+                <thead>
+                    <tr>
+                        <th rowspan="2">
+                            Đơn hàng
+                        </th>
+                        <th colspan="2">
+                            Nấc tiền thu hộ
+                        </th>
+    
+                    </tr>
+                    <tr>
+                        <th>
+                            Bưu điện quy định
+                        </th>
+                        <th>
+                            Bookbuy thu của khách
+                        </th>
+                    </tr>
+                </thead>
+    
+                <tr>
+                    <td>
+                        Dưới 100,000 đồng
+                    </td>
+                    <td>
+                        13,000
+                    </td>
+                    <td>
+                        13,000
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Từ 101,000 - 300,000 đồng
+                    </td>
+                    <td>
+                        13,000
+                    </td>
+                    <td>
+                        9000
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Trên 300,000 - 600,000 đồng
+                    </td>
+                    <td>
+                        15,000
+                    </td>
+                    <td>
+                        9000
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Trên 600.000-1 triệu đồng
+                    </td>
+                    <td>
+                        17.000
+                    </td>
+                    <td>
+                        9000
+                    </td>
+                </tr>
+            </table>
+        </div>
+    
+        <p>
+            <i>* Cước đã bao gồm thuế giá trị gia tăng</i>
+        </p>
+        
+        <h4 id="payment-banking">
+            2. Thanh toán qua ngân hàng - Internet Banking
+        </h4>
+        <p><strong>a. Thẻ ATM Internet Banking (miễn phí thanh toán)</strong></p>
+        <p>Ngoài việc được miễn phí thanh toán, Quý khách còn được <b>hoàn trực tiếp 2% giá trị cho các đơn hàng liên tỉnh</b> (không bao gồm bảng vẽ điện tử) khi thanh toán theo hình thức thẻ ATM Internet Banking.</p>
+        <p><strong>* Bạn cần đăng ký tài khoản Internet Banking để sử dụng hình thức thanh toán này.</strong></p>
+        <p>
+            Tại bước thanh toán thứ 3 “Vận chuyển / Thanh toán”, bạn chọn “Chuyển khoản qua ngân hàng / Internet banking”, sau đó chọn ngân hàng bạn muốn sử dụng.
+        </p>
+        <p class="img-box">
+            <img src="{% static 'images/local/img-banking.jpg' %}" />
+        </p>
+        <p>
+            Click <strong>“Đặt mua”</strong>. Hệ thống sẽ chuyển sang trang Internet Banking. Bạn điền đầy đủ theo các thông tin để hoàn tất thủ tục chuyển tiền.
+        </p>
+        <p><u>Quý khách lưu ý:</u></p>
+        <p>Bookbuy sẽ nhanh chóng gửi hàng sau khi nhận được thông báo chuyển tiền.</p>
+        <p id="payment-bank"><strong>b. Chuyển tiền qua ngân hàng</strong></p>
+        <p>Quý khách được <b>hoàn trực tiếp 2% giá trị cho các đơn hàng liên tỉnh</b> (không bao gồm bảng vẽ điện tử) khi thanh toán theo hình thức này.</p>
+        <p>
+            <b>Khách hàng trong nước</b>
+        </p>
+        <p>
+            Nếu bạn chọn phương thức thanh toán qua ngân hàng, vui lòng chuyển tiền vào tài khoản:
+        </p>
+        <div>
+            <ul>
+                
+                
+                <li>
+                    Ngân Hàng Ngoại Thương Việt Nam - VIETCOMBANK – CN Tân Định
+                    <br />
+                    Người nhận: Đỗ Hoài Trinh
+                    <br />
+                    Số tài khoản: 0371000430030
+    
+                </li>
+                
+            </ul>
+        </div>
+    
+        
+        <p>
+             
+            <strong>
+                Đơn hàng có giá trị từ 20 triệu đồng trở lên cần xuất VAT, quý khách vui lòng gọi vào số hotline của Bookbuy - 0933109009 để được tư vấn.
+            </strong>
+        </p>
+    
+        
+    
+    
+        <h4 id="payment-onepay">3. Ví điện tử</h4>
+        <p>Quý khách được <b>hoàn trực tiếp 2% giá trị cho các đơn hàng liên tỉnh</b> (không bao gồm bảng vẽ điện tử) khi thanh toán theo hình thức này.</p>
+        <p>
+            Để thanh toán được trên các cổng thanh toán quý khách cần có tài khoản trên đó. Hiện tại Bookbuy đang hỗ trợ các cổng sau :
+        </p>
+        <ul>
+            <li>
+                Paypal
+            </li>
+            <li>
+                Ngân lượng
+            </li>
+            <li>
+                Bảo kim
+            </li>
+            
+        </ul>
+    
+        <h4 id="payment-visa">4. Thẻ Quốc tế / Thẻ nội địa (Moca)</h4>
+        <p>Quý khách được <b>hoàn trực tiếp 2% giá trị cho các đơn hàng liên tỉnh</b> (không bao gồm bảng vẽ điện tử) khi thanh toán theo hình thức này.</p>
+        <p>
+            Thanh toán vô cùng dễ dàng thông qua thẻ quốc tế (Visa, MasterCard, JCB) do các ngân hàng có trụ sở, chi nhánh tại Việt Nam phát hành, hoặc thẻ ATM nội địa của ACB, VPBank.
+        </p>
+        <p>
+            Tại bước thanh toán giỏ hàng thứ 3, mục Phương thức thanh toán, click chọn Thẻ quốc tế / Thẻ nội địa (Moca).
+            Nhập đầy đủ các thông tin khác rồi click nút “Đặt mua”
+    
+        </p>
+        <p class="img-box">
+            <img src="{% static 'images/local/moca-help1.png' %}" />
+        </p>
+        <p>
+            Quý khách sẽ được chuyển sang cổng thanh toán Moca. Tại đây, Quý khách có thể lựa chọn 2 cách thanh toán:
+        </p>
+        <p>
+            <b>Cách 1:</b>  Điền đầy đủ các thông tin thẻ (nội địa hoặc quốc tế) và chọn <b>“Thực hiện thanh toán”</b> để hoàn tất.
+        </p>
+        <p>
+            <strong> Xin lưu ý: </strong>
+            Thông tin của bạn sẽ được mã hóa. Bookbuy hay Moca không thể lưu trữ những nội dung này. Hãy đảm bảo không ai biết thông tin thẻ khi đang thực hiện bước này.
+        </p>
+        <p>
+            <b>Cách 2:</b>  Với ứng dụng Moca trên Smartphone, chọn <b>“Thanh toán”</b> trên ứng dụng để quét mã QR Moca và hoàn tất giao dịch.
+        </p>
+        <p class="img-box">
+            <img src="{% static 'images/local/moca-help2.png' %}" />
+        </p>
+        <h3 id="shippingtype">PHƯƠNG THỨC VẬN CHUYỂN</h3>
+        <h4>
+            1. KHÁCH HÀNG TRONG NƯỚC
+        </h4>
+        <p id="shipping-inhcm">
+            <b>
+                A. Giao hàng tận nơi trong nội thành Sài Gòn:
+            </b>
+    
+        </p>
+        <p>
+            Nhân viên giao hàng Bookbuy sẽ giao hàng tận nơi đến địa chỉ người nhận tại các quận nội thành, bao gồm: Quận 1, 3, 4, 5, 10, 11, Bình Thạnh, Phú Nhuận, Gò Vấp, Tân Bình và một phần Quận 2, 6, 7, 8, Tân Phú.
+        </p>
+        <p>
+            Mức phí vận chuyển (nếu có phát sinh) như sau:
+        </p>
+        <div style="width:90%; margin:0 auto">
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width:35%;">
+                            MỨC PHÍ
+                        </th>
+                        <th>
+                            QUẬN
+                        </th>
+                        <th>
+                            GHI CHÚ
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            15,000đ (áp dụng đối với hóa đơn >100,000đ)
+                            <br />
+                            20,000đ (áp dụng đối với hóa đơn <= 100,000đ)
+                        </td>
+                        <td>
+                            1 - 3 - Bình Thạnh - Phú Nhuận
+                        </td>
+                        <td>
+                            Miễn phí giao hàng với hóa đơn >= 150,000 vnđ
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            20,000đ
+                        </td>
+                        <td>
+                            2 - 4 - 5 - 6 - 7 - 8 - 10 - 11 - Gò Vấp – Tân Bình – Tân Phú
+                        </td>
+                        <td>
+                            Miễn phí giao hàng với hóa đơn >=200,000đ
+                            (Trừ Phường Cát Lái và Thạnh Mỹ Lợi của Q.2; Phường 10 - 11 - 12 - 13 - 14 của Q.6; Phường Tân Mỹ của Q.7; Phường 15 - 16 của Q8; Phường Sơn Kỳ của Q. Tân Phú)
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    
+        <p>
+            * Không tính phí cho những đơn hàng nhận tại văn phòng BookBuy
+        </p>
+        <p>
+            * Các phường Cát Lái và Thạnh Mỹ Lợi của Quận 2, phường 10 - 11 - 12 - 13 - 14 của Quận 6, phường Tân Mỹ của Quận 7, phường 15-16 của Quận 8, phường Sơn Kỳ của Quận Tân Phú được MIỄN PHÍ PHÍ COD.
+        </p>
+    
+        <p id="shipping-office">
+            <b>
+                B. Giao hàng tận nơi ngoại thành Sài Gòn và các tỉnh thành khác:
+            </b>
+        </p>
+        <p>
+            Nhân viên bưu điện và dịch vụ giao nhận sẽ giao hàng tận nơi đến địa chỉ người nhận ở ngoại thành Sài Gòn (*) và các tỉnh thành khác.<b> MIỄN PHÍ VẬN CHUYỂN THƯỜNG cho các đơn hàng ngoại thành từ 200,000đ và đơn hàng liên tỉnh từ 250,000đ</b>.
+        </p>
+        <p>
+            (*)<b> Ngoại thành Sài Gòn bao gồm </b>: Bình Tân, Bình Chánh, Nhà Bè, Cần Giờ, Thủ Đức, Q.9, Q.12, Huyện Củ Chi, Huyện Hóc Môn, Phường Cát Lái và Thạnh Mỹ Lợi của Q.2, Phường 10 - 11 - 12 - 13 - 14 của Q.6, Phường Tân Mỹ của Q.7, Phường 15 - 16 của Q8, Phường Sơn Kỳ của Q. Tân Phú.
+        </p>
+    
+        <p>Mức phí vận chuyển (nếu có phát sinh) như sau:</p>
+        <div style="text-align:center">
+            <h4> CƯỚC BƯU PHẨM BẢO ĐẢM TRONG NƯỚC</h4>
+            <i>(Ban hành kèm theo Quyết định số 70/QĐ-BĐVN ngày 25/01/2014 của Tổng Giám đốc Tổng công ty Bưu điện Việt Nam)</i>
+            <br />
+            <i>CHƯA BAO GỒM THUẾ GTGT 10%</i>
+        </div>
+        <p style="text-align:center">
+            <strong> CƯỚC CHÍNH BƯU PHẨM BẢO ĐẢM</strong>
+        </p>
+    
+    
+        <div>
+            <table style="width:600px; margin:0 auto">
+                <thead>
+                    <tr>
+                        <th rowspan="2">
+                            LOẠI BƯU PHẨM
+                        </th>
+                        <th rowspan="2">
+                            NẤC KHỐI LƯỢNG
+                        </th>
+                        <th colspan="2">
+                            MỨC CƯỚC (đồng/bưu phẩm)
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>
+                            TPHCM
+                        </th>
+                        <th>
+                            LIÊN TỈNH
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td rowspan="7"></td>
+                        <td>
+                            Đến 20 gram
+                        </td>
+                        <td>
+                            5.000
+                        </td>
+                        <td>
+                            5.000
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Trên 20 gram đến 100 gram
+                        </td>
+                        <td>
+                            6.000
+                        </td>
+                        <td>
+                            6.000
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Trên 100 gram đến 250 gram
+                        </td>
+                        <td>
+                            7.000
+                        </td>
+                        <td>
+                            7.000
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Trên 250 gram đến 500 gram
+                        </td>
+                        <td>
+                            9.500
+                        </td>
+                        <td>
+                            9.500
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Trên 500 gram đến 1.000 gram
+                        </td>
+                        <td>
+                            12.500
+                        </td>
+                        <td>
+                            14.500
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Trên 1.000 gram đến 1.500 gram
+                        </td>
+                        <td>
+                            15.500
+                        </td>
+                        <td>
+                            18.500
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Trên 1.500 gram đến 2.000 gram
+                        </td>
+                        <td>
+                            18.500
+                        </td>
+                        <td>
+                            23.500
+                        </td>
+                    </tr>
+    
+                </tbody>
+            </table>
+        </div>
+    
+    
+        <p style="text-align:center">
+            <strong> PHỤ PHÍ XĂNG DẦU</strong>
+        </p>
+        <p style="text-align:center">
+            Mức thu phụ phí xăng dầu áp dụng đối với cước nêu tại mục I là 15% (thay đổi theo từng thời điểm công bố).
+        </p>
+    
+        <div style="text-align:center">
+            <h4>
+                CƯỚC BƯU KIỆN TRONG NƯỚC
+            </h4>
+            <i> (Ban hành kèm theo Quyết định số 72/QĐ-BĐVN ngày 25/01/2014 của Tổng Giám đốc Tổng công ty Bưu điện Việt Nam)</i>
+            <br />
+            <i>CHƯA BAO GỒM THUẾ GIÁ TRỊ GIA TĂNG 10%</i>
+        </div>
+    
+        <p style="text-align:center">
+            <strong> CƯỚC CHÍNH (CƯỚC BƯU KIỆN THỦY BỘ)</strong>
+        </p>
+    
+        <div>
+            <table style="width:600px; margin:0 auto;">
+                <thead>
+                    <tr>
+                        <th rowspan="2">
+                            Khối lượng
+                        </th>
+                        <th colspan="4">
+                            Mức cước (đồng)
+                        </th>
+    
+                    </tr>
+                    <tr>
+                        <th>
+                            TP. HCM
+                        </th>
+                        <th>
+                            Nội vùng
+                        </th>
+                        <th>
+                            Cận vùng
+                        </th>
+                        <th>
+                            Cách vùng
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+    
+                    <tr>
+                        <td>
+                            Đến 05kg
+                        </td>
+                        <td>
+                            23.000
+                        </td>
+                        <td>
+                            25.000
+                        </td>
+                        <td>
+                            33.000
+                        </td>
+                        <td>
+                            35.000
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Mỗi 01kg tiếp theo trên 05kg đến 30kg
+                        </td>
+                        <td>
+                            2.300
+                        </td>
+                        <td>
+                            3.100
+                        </td>
+                        <td>
+                            4.000
+                        </td>
+                        <td>
+                            5.000
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Mỗi 01kg tiếp theo trên 30kg đến 200kg
+                        </td>
+                        <td>
+                            1.800
+                        </td>
+                        <td>
+                            2.100
+                        </td>
+                        <td>
+                            2.800
+                        </td>
+                        <td>
+                            3.400
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Mỗi 01kg tiếp theo trên 200kg đến 500kg
+                        </td>
+                        <td>
+                            1.400
+                        </td>
+                        <td>
+                            1.900
+                        </td>
+                        <td>
+                            2.600
+                        </td>
+                        <td>
+                            3.200
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Mỗi 01kg tiếp theo trên 500kg
+                        </td>
+                        <td>
+                            1.100
+                        </td>
+                        <td>
+                            1.700
+                        </td>
+                        <td>
+                            2.400
+                        </td>
+                        <td>
+                            3.000
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    
+    
+        <div style="width:600px; margin:0 auto;">
+            <strong> Ghi chú</strong>
+            <div>
+                <ul>
+                    <li>
+                        Cước chính đã bao gồm cước phát tại địa chỉ;
+                    </li>
+                    <li>
+                        Bưu kiện có khối lượng tối đa là 30kg;
+                    </li>
+                    <li>
+                        Quy định về khối lượng quy đổi áp dụng đối với bưu kiện chứa hàng nhẹ:
+    
+                        Khối lượng quy đổi = (chiều dài x chiều rộng x chiều cao) (cm3) /6.000
+                    </li>
+                </ul>
+            </div>
+    
+            <p style="text-align:center">
+                <strong> PHỤ PHÍ</strong>
+    
+            </p>
+            <p style="text-align:center">
+                Mức thu phụ phí xăng dầu áp dụng đối với cước chính nêu tại mục I là 0% đối với TP. HCM và 15% đối với các vùng (thay đổi theo từng thời điểm công bố).
+            </p>
+            <p>
+                Danh sách các tỉnh thuộc các vùng cước:
+            </p>
+            <div>
+                <ul>
+                    <li>
+                        Nội vùng: bao gồm 23 tỉnh Miền Nam: An Giang, Bình Dương, Bình Phước, Bà Rịa- Vũng Tàu, Bạc Liêu, Bến Tre, Bình Thuận, Cà Mau, Cần Thơ, Đồng Nai, Đồng Tháp, TP. Hồ Chí Minh, Hậu Giang, Kiên Giang, Khánh Hoà, Long An, Lâm Đồng, Ninh Thuận, Sóc Trăng, Tây Ninh, Tiền Giang, Trà Vinh, Vĩnh Long.
+                    </li>
+                    <li>
+                        Cận vùng: bao gồm 11 tỉnh Miền Trung: Bình Định, Đà Nẵng, Gia Lai, Huế, Kon Tum, Phú Yên, Quảng Trị, Quảng Nam, Quảng Ngãi, Đắc Lắc, Đắc Nông.
+                    </li>
+                    <li>
+                        Cách vùng: bao gồm 29 tỉnh Miền Bắc: Bắc Cạn, Bắc Giang, Bắc Ninh, Cao Bằng, Điện Biên, Hà Nội, Hà Giang, Hà Nam, Hà Tĩnh, Hải Dương, Hải Phòng, Hưng Yên, Hoà Bình, Lào Cai, Lai Châu, Lạng Sơn, Nam Định, Nghệ An, Ninh Bình, Phú Thọ, Quảng Ninh, Quảng Bình, Sơn La, Thái Bình, Thái  Nguyên, Thanh Hóa, Tuyên Quang, Vĩnh Phúc, Yên Bái.
+                    </li>
+                </ul>
+            </div>
+        </div>
+    
+    
+        <p id="shipping-ems">
+            <b>
+                C. Chuyển phát nhanh EMS:
+            </b>
+        </p>
+    
+        <p>
+            Bạn sẽ nhận được sản phẩm mình đặt mua trong vòng 2 ~ 4 ngày bằng dịch vụ EMS.
+        </p>
+        <p>
+            <strong> Xem chi tiết cước phí vận chuyển:</strong>
+        </p>
+        <div style="text-align:center; width:600px; margin:0 auto">
+            <h4>
+                CƯỚC CHUYỂN PHÁT NHANH TRONG NƯỚC
+            </h4>
+            <i>
+                (Ban hành kèm theo Quyết định số 3023/QĐ-BĐHCM ngày 15/07/2013 của
+    
+                Giám đốc Bưu điện TP. Hồ Chí Minh và Quyết định số 557/QĐ-KDTT ngày 14/06/2013 của
+    
+                Tổng Giám đốc Công ty Cổ phần Chuyển phát nhanh Bưu điện)
+            </i>
+            <br />
+            <i>
+                CHƯA BAO GỒM THUẾ GIÁ TRỊ GIA TĂNG
+            </i>
+            <p>
+                <strong> CƯỚC CHÍNH:  (chưa bao gồm các loại phụ phí )</strong>
+                <br />
+                ĐƠN VỊ TÍNH:  ĐỒNG/BƯU GỬI
+            </p>
+    
+            <div>
+                <table style="width:600px; margin:0 auto">
+                    <thead>
+                        <tr>
+                            <th rowspan="3">
+                                NẤC TRỌNG LƯỢNG
+                            </th>
+                            <th rowspan="3">
+                                TP. Hồ Chí Minh
+                            </th>
+                            <th colspan="4">
+                                Liên tỉnh
+                            </th>
+                        </tr>
+                        <tr>
+                            <th rowspan="2">
+                                Vùng 1
+                            </th>
+                            <th colspan="2">
+                                Vùng 2
+                            </th>
+                            <th rowspan="2">
+                                Vùng 3
+                            </th>
+                        </tr>
+                        <tr>
+                            <th>
+                                Đà Nẵng
+                            </th>
+                            <th>
+                                Hà Nội
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+    
+                        <tr>
+                            <td>
+                                Đến 50 gram
+                            </td>
+                            <td>
+                                7.700
+                            </td>
+                            <td>
+                                8.500
+                            </td>
+                            <td>
+                                9.500
+                            </td>
+                            <td>
+                                9.500
+                            </td>
+                            <td>
+                                10.000
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Trên 50gram đến 100 gram
+                            </td>
+                            <td>
+                                8.000
+                            </td>
+                            <td>
+                                12.500
+                            </td>
+                            <td>
+                                13.500
+                            </td>
+                            <td>
+                                13.500
+                            </td>
+                            <td>
+                                14.000
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Trên 100 gram đến 250 gram
+                            </td>
+                            <td>
+                                10.000
+                            </td>
+                            <td>
+                                16.500
+                            </td>
+                            <td>
+                                20.000
+                            </td>
+                            <td>
+                                21.500
+                            </td>
+                            <td>
+                                22.500
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Trên 250 gram đến 500gram
+                            </td>
+                            <td>
+                                12.500
+                            </td>
+                            <td>
+                                23.500
+                            </td>
+                            <td>
+                                26.500
+                            </td>
+                            <td>
+                                28.000
+                            </td>
+                            <td>
+                                29.500
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Trên 500gram đến 1.000gram
+                            </td>
+                            <td>
+                                15.000
+                            </td>
+                            <td>
+                                33.000
+                            </td>
+                            <td>
+                                38.500
+                            </td>
+                            <td>
+                                40.500
+                            </td>
+                            <td>
+                                43.500
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Trên 1.000gram đến 1.500gram
+                            </td>
+                            <td>
+                                18.000
+                            </td>
+                            <td>
+                                40.000
+                            </td>
+                            <td>
+                                49.500
+                            </td>
+                            <td>
+                                52.500
+                            </td>
+                            <td>
+                                55.500
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Trên 1.500gram đến 2.000gram
+                            </td>
+                            <td>
+                                21.000
+                            </td>
+                            <td>
+                                48.500
+                            </td>
+                            <td>
+                                59.500
+                            </td>
+                            <td>
+                                63.500
+                            </td>
+                            <td>
+                                67.500
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Mỗi nấc 500gram tiếp theo
+                            </td>
+                            <td>
+                                2.000
+                            </td>
+                            <td>
+                                3.800
+                            </td>
+                            <td>
+                                8.500
+                            </td>
+                            <td>
+                                8.500
+                            </td>
+                            <td>
+                                9.500
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    
+        <div style="width:600px; margin:0 auto">
+            <p>
+                <strong> Ghi chú:</strong>
+            </p>
+            <div>
+                <ul>
+                    <li>
+                        Liên tỉnh vùng 1: áp dụng đối với các bưu gửi từ TP.HCM đến các tỉnhAn Giang, Bình Dương, Bình Phước, Bà Rịa-Vũng Tàu, Bạc Liêu, Bến Tre, Bình Thuận, Cà Mau, Cần Thơ, Đồng Nai, Đồng Tháp, Hậu Giang, Kiên Giang, Long An, Lâm Đồng, Ninh Thuận, Sóc Trăng, Tây Ninh, Tiền Giang, Trà Vinh, Vĩnh Long, ĐắkLắk, Đắk Nông.
+                    </li>
+                    <li>
+                        Liên tỉnh vùng 2:
+                        <br />
+                        áp dụng đối với các bưu gửi từ TP.HCM đến Đà Nẵng.
+                        <br />
+                        áp dụng đối với các bưu gửi từ TP.HCM đến Hà Nội.
+                    </li>
+                    <li>
+                        Liên tỉnh vùng 3: áp dụng đối với các bưu gửi từ TP.HCM đến các tỉnh Bình Định, Gia Lai, Thừa Thiên-Huế, Kon Tum, Khánh Hòa, Phú Yên, Quảng Bình, Quảng Trị, Quảng Nam, Quảng Ngãi, Bắc Cạn, Bắc Giang, Bắc Ninh, Cao Bằng, Điện Biên, Hà Giang, Hà Nam, Hà Tĩnh, Hải Dương, Hải Phòng, Hưng Yên, Hòa Bình, Lào Cai, Lai Châu, Lạng Sơn, Nam Định, Nghệ An, Ninh Bình, Phú Thọ, Quảng Ninh, Sơn La, Thái Bình, Thái Nguyên, Thanh Hóa, Tuyên Quang, Vĩnh Phúc, Yên Bái.
+                    </li>
+                </ul>
+            </div>
+            <p>
+                <strong> Cách tính cước hàng cồng kềnh, hàng nhẹ:</strong>
+            </p>
+            <div>
+                <ul>
+                    <li>
+                        Hàng cồng kềnh: Là hàng gửi có chu vi lớn nhất cộng với số đo của chiều còn lại lớn hơn 3m và nhỏ hơn 5m, hoặc chiều dài nhất của bưu gửi lớn hơn 1,5m và nhỏ hơn 2m: thu cước bằng 1,5 lần mức cước Chuyển phát nhanh tương ứng quy định tại điểm 1 Mục I  và phụ phí xăng dầu tại Mục II.
+                    </li>
+                    <li>
+                        Hàng nhẹ: Là hàng gửi có khối lượng dưới 167kg/m3 (tương đương với trên 6.000cm3/kg) không phân biệt phương tiện vận chuyển, khối lượng tính cước không căn cứ vào khối lượng thực mà căn cứ vào khối lượng quy đổi từ thể tích kiện hàng theo công thức sau:
+                        <br />
+                        Khốilượng quy đổi   =
+    
+    
+                        Thể tíchkiệnhàng (cm3)
+    
+                        6.000
+                    </li>
+                </ul>
+            </div>
+    
+            <p>
+                <strong>
+                    PHỤ PHÍ XĂNG DẦU:
+                </strong>
+            </p>
+            <p>
+                áp dụng phụ phí xăng dầu bằng 10% đối với TP. Hồ Chí Minh; 20% đối với liên tỉnh trên cước chính quy định tại Mục I; (Mức thu này sẽ được thay đổi tùy theo từng thời điểm)
+            </p>
+        </div>
+    
+    
+        <p>
+            <b>
+                D. CƯỚC THU TIỀN HỘ (COD) TRONG NƯỚC :
+            </b>
+        </p>
+        <p>
+            Cước đã bao gồm thuế giá trị gia tăng
+        </p>
+    
+        <div style="width:600px; margin:0 auto">
+            <table>
+                <thead>
+                    <tr>
+                        <th rowspan="2">
+                            Nấc tiền thu hộ
+                        </th>
+                        <th colspan="2">
+                            Mức cước (đồng)
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>
+                            Bưu điện
+                        </th>
+                        <th>
+                            Bookbuy
+                        </th>
+                    </tr>
+                </thead>
+    
+                <tr>
+                    <td>
+                        Dưới 100.000 đồng
+                    </td>
+                    <td>
+                        13.000
+                    </td>
+                    <td>
+                        13.000
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Từ 100.000 đồng - 300.000 đồng
+                    </td>
+                    <td>
+                        13.000
+                    </td>
+                    <td>
+                        9.000
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Trên 300.000-600.000 đồng
+                    </td>
+                    <td>
+                        15.000
+                    </td>
+                    <td>
+                        9.000
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Trên 600.000-1 triệu đồng
+                    </td>
+                    <td>
+                        17.000
+                    </td>
+                    <td>
+                        9.000
+                    </td>
+                </tr>
+            </table>
+        </div>
+    
+    
+        <h4 id="shipping-national">
+            2. KHÁCH HÀNG QUỐC TẾ
+        </h4>
+        <p>
+            <b>
+                A. Chuyển thường bằng tàu
+            </b>
+        </p>
+        <p>
+            Sản phẩm bạn đặt mua sẽ được gởi thông qua đường Bưu điện, vận chuyển bằng tàu. Cước phí vận chuyển sẽ được thông báo ngay khi bạn hoàn tất đơn đặt hàng. Thời gian quý khách nhận được hàng theo cách gởi này từ 2- 3 tháng.
+        </p>
+        <p>
+            <b>
+                B. Chuyển thường bằng máy bay
+            </b>
+        </p>
+        <p>
+            Sản phẩm bạn đặt mua sẽ được gởi thông qua đường Bưu điện, vận chuyển bằng máy bay. Cước phí vận chuyển sẽ được thông báo ngay khi bạn hoàn tất đơn đặt hàng. Thời gian quý khách nhận được hàng khoảng 8 – 15 ngày.
+        </p>
+        <p>
+            <b>
+                C. Chuyển phát nhanh UPS
+            </b>
+        </p>
+        <p>
+            Sản phẩm bạn đặt mua sẽ được vận chuyển nhanh thông qua nhà cung cấp dịch vụ UPS. Cước phí vận chuyển sẽ được thông báo ngay khi bạn hoàn tất đơn đặt hàng.
+        </p>
+        <p>
+            Nếu có thắc mắc hay cần sự hỗ trợ nào, quý khách vui lòng gọi cho chúng tôi số : (028) 3820 7153 - 0933 109 009, hoặc email cho chúng tôi theo địa chỉ : info@bookbuy.vn
+        </p>
+    
+    
+    </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+        <div class="letter-bottom">
+            <div class="container">
+                <div class="row form-letter">
+                    <div class="col-md-2 canh-cam-img">
+                        <img src="{% static 'images/local/canh-cam-letter.png' %}" />
+                    </div>
+                    <div class="col-md-4 canh-cam-letter">
+                        <p class="head-text-letter">Đăng ký nhận bản tin từ Bookbuy</p>
+                        <p class="sub-text-letter">Đừng bỏ lỡ những tin nhắn ưu đãi độc quyền dành riêng cho bạn</p>
+                    </div>
+                    <div class="col-md-6 canh-cam-form">
+    <form action="/BookBuy/RegisterLetter" data-ajax="true" data-ajax-failure="EmailRegisterBottomFailure" data-ajax-success="EmailRegisterBottomSuccess" id="emailletter-bottom" method="post">                        <div class="entry-form">
+                                <span class="toggle-error"></span>
+                                <span class="toggle-success"></span>
+                                <input type="hidden" id="sexId" name="sexId" />
+                                <input type="text" name="EmailLetter" id="submit-letter" placeholder="Nhập địa chỉ email của bạn" />
+                                <ul class="action-submit">
+                                    <li><a href="javacript:void(0)" class="submit-letter-canh-cam" data-gender="1">NAM</a></li>
+                                    <li><a href="javacript:void(0)" class="submit-letter-canh-cam" data-gender="0">NỮ</a></li>
+                                    <li><a href="javacript:void(0)" class="submit-letter-canh-cam" data-gender="2">LGBT</a></li>
+                                </ul>
+                            </div>
+    </form>                </div>
+                </div>
+            </div>
+        </div>
+        
+{% endblock %}

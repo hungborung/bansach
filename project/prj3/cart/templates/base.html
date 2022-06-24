@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../static/css/style.css">
+    <link rel="stylesheet" href="../../static/css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="../../static/css/bootstrap/font-awesome.min.css">
+    <link rel="stylesheet" href="../../static/js/bootstrap/bootstrap.bundle.min.js">
+    <link rel="stylesheet" href="../../static/js/bootstrap/bootstrap.min.js">
+    <link rel="stylesheet" href="../../static/js/bootstrap/jquery-3.4.1.slim.min.js">
+    <link rel="stylesheet" href="../../static/js/bootstrap/popper.min.js">
+
+</head>
+
+{% block header %}
+<div class="wrapper">
+    <div class="header">
+        <div class="header-top">
+            <div class="navbar-wrapper navbar-default" role="navigation">
+                <div class="container clearfix navbar-default">
+                    <div class="main-box">
+                        <div class="row">
+                            <div class="left-header clearfix">
+                                <ul class="left">
+                                    <li class=""> 
+                                        <a href="">
+                                            <i class="fa fa-info-circle"></i>
+                                            Trợ giúp
+                                        </a>
+                                    </li>
+                                    <li class="">
+                                        <a href="">
+                                            <i class="fa fa-newspaper-o" aria-hidden="true"></i>
+                                            Tin tức
+                                        </a>
+                                    </li>
+                                    <li class="">
+                                        <a href="">
+                                            <i class="fa fa-tags"></i>
+                                            Khuyến mãi
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="right-header clearfix">
+                                <ul class="right">
+                                    <li class="">
+                                        <a href="">
+                                            <i class="fa fa-gift"></i>
+                                            Ưu đãi và tiện ích
+                                        </a>
+                                    </li>
+                                    <li class="">
+                                        <a href="">
+                                            <i class="fa fa-shopping-bag"></i>
+                                            Kiểm tra đơn hàng
+                                        </a>
+                                    </li>
+                                    <li class="">
+                                        <a href="">
+                                            <i class="fa fa-sign-in"></i>
+                                            Đăng nhập
+                                        </a>
+                                    </li>
+                                    <li class="">
+                                        <a href="">
+                                            <i class="fa fa-user-plus"></i>
+                                            Đăng ký
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div> 
+                    </div>
+                      
+                </div>
+            </div>     
+        </div>
+        <div class="logo clearfix">
+            <div class="container clearfix">
+                <div class="logo-left col-md-2">
+                    <a href="">
+                        <img src="https://bookbuy.vn/Images/frontend/base/logo-new.png" alt="">
+                    </a>
+                </div>
+                <div class="search-box col-md-6">
+                    
+                        <input type="text" placeholder="Tìm kiếm sản phẩm mong muốn..." autocomplete="off">
+                        <span class="button-search fa fa-search">
+                        </span>
+                    
+                </div>
+                <div class="contact col-md-4">
+                    <div class="hotline col-md-8">
+                        <i class="ic fa fa-headphones fa-2x"></i>
+                        <span>
+                            <p>0933 109 009</p>
+                            <p style="color: #333;font-size: 15px;">Hot line</p>
+                        </span>
+                    </div>
+                    <div class="cart col-md-4">
+                        <i class="fa fa-shopping-cart fa-2x"></i>
+                        <a href="{% url 'cart' %}">Giỏ hàng</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+<div class="main-content clearfix">
+{% block content %}
+{% endblock %}  
+</div>
+
+{% block footer %}
+
+{% endblock %}
+</div>
+
+

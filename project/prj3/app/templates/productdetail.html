@@ -1,0 +1,408 @@
+{% extends "base.html" %}
+
+{% block title %}
+  {{ product.name }} 
+  {% with page=1 %}
+   {{ block.super }}
+ {% endwith %}
+ 
+{% endblock %}
+
+{% block content %} 
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/product-detail.css' %}">
+
+<script src="{% static 'js/jquery.collapser.js' %}"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<div id="productapp">
+  
+  <main class="pt-1">
+    
+    <div class="container dark-grey-text">
+      <nav class="breadcrumb-bar" aria-label="breadcrumbs">
+        <ul class="breadcrumb" style="background-color: #F0F0F0; font-size: 15px; margin-bottom: 0px;">
+          <li class="breadcrumb-item"><a href="{% url 'home' %}">Trang chủ</a></li>
+          {% if product.category.cat_parent %}
+          <li class="breadcrumb-item"><a href="">{{ product.category.cat_parent.name }}</a></li>
+          <li class="breadcrumb-item"><a href="">{{ product.category.name }}</a></li>
+          {% elif product.category %}
+            <li class="breadcrumb-item"><a href="">{{ product.category.name }}</a></li>
+          {% endif %}
+          <li class="active breadcrumb-item" aria-current="page"><a href="">{{ product.name }}</a></li> 
+        </ul>
+      </nav>
+      <!--Grid row-->
+      <div class="wow">
+
+        <!--Grid column-->
+        <div class="row">
+          <div class="col-md-6 mb-4" style="float: left;">
+
+            <img :src="mainImage" class="img-fluid" alt="">
+            <hr>
+            {% if product.thumbnail %}
+            <div class="img-product">
+                <div class="row">
+                  <div class="col-md-2" v-for="image in images">
+                    <img :src="image.thumbnail" alt="" @click="changeMainImage(image.image)" style="width: 90px; height: 90px;">
+                  </div>
+                </div>
+
+            </div>
+            {% endif %}
+  
+          </div>
+          <!--Grid column-->
+  
+          <!--Grid column-->
+          <div class="col-md-6 mb-4" style="float: left;">
+  
+            <!--Content-->
+            <div class="p-4">
+  
+              <div class="mb-3">
+                <a href="">
+                  <span class="badge purple mr-1">{{ product.category.name }}</span>
+                </a>
+                <a href="">
+                  <span class="badge blue mr-1">New</span>
+                </a>
+                {% if product.is_featured %}
+                  <a href="">
+                    <span class="badge red mr-1">Đặc sắc</span>
+                  </a>
+                {% endif %}
+              </div>
+              <div class="product-detail">
+                <div class="product-name" style="font-size: 20px; font-weight: bold;">
+                  <span>{{product.name}}</span>
+                </div>
+                <div class="product-publisher" >
+                  <a href="{% url 'publisher' product.publisher.slug %}"><span>{{product.publisher.name}}</span></a>
+                </div>
+                
+              </div>
+              <p class="lead product-price">
+                {% if product.discount > 0 %}
+                  <span style="color: #F39801; font-weight: bold; font-size: 25px;">{{ priceDiscount }}đ</span>
+                  <span class="mr-1">
+                    <del style="font-size: 18px;">{{ product.price_sell }}đ</del>
+                  </span>
+                  <span class="discount-percent" style="background-color: #FEF4E8; color: #F15C22; font-size: 20px;">
+
+                      -{{ product.discount }}%
+                   
+                  </span>
+                {% else %}
+                  <span>{{ product.price_sell }}đ</span>
+                {% endif %}
+              </p>
+              <div class="review">
+                <span style="border-bottom: 1px solid #555; font-size: 18px;">{{ product.get_rating|floatformat:1 }}</span> |
+                <a href="#review" style="text-decoration: none" onclick="review()">
+                  <span style="font-size: 18px; border-bottom: 1px solid #555;">{{ total_review }}</span> Đánh giá |
+                </a>
+                
+                
+              </div>
+             
+              <div class="expected-delivery">
+                <div class="expected-delivery-address">
+                  <span style="margin-right: 30px;">
+                    Thời gian giao hàng
+                  </span>
+                  <span>
+                    Địa điểm giao hàng
+                  </span>
+                </div>
+              </div>
+              <div class="expected-return-product-policy">
+                <span style="margin-right: 42px;">
+                  Chính sách đổi trả
+                </span>
+                <span>
+                  Đổi trả sản phẩm trong 30 ngày
+                </span>
+              </div>
+              <div class="cart pt-2">
+                <!-- Default input -->
+                {% if product.in_cart %}
+                  <p>Already in cart!</p>
+                {% else %}
+                  {% if product.num_available > 0 %}
+                    <input type="number" value="1" aria-label="Search" class="form-control" style="width: 100px; float: left;">
+                    <button class="btn btn-outline-primary" @click="addToCart({{ product.id }})" style="float: left; margin-left: 20px; background-color: #F15C22; color: white; border: none;">Mua ngay
+                  {% else %}  
+                    <p>Sản phẩm hết hàng</p>
+                  {% endif %}
+                {% endif %}
+                </button>
+                <p>{{ name }}</p>
+              </div>
+              <br>
+              <br>
+              <div class="call">
+                <p>
+                  Gọi đặt hàng <a href="tel:02838207153" style="color: #F15C22; font-weight: bold;"> (028) 3820 7153 </a> hoặc <a href="tel:0933 109 009" style="color: #F15C22; font-weight: bold;">0933 109 009</a>
+                </p>
+              </div>
+              
+              <div class="promotion">
+                <div class="title">
+                  <h5>Thông tin và khuyến mãi</h5>
+                </div>
+                <div class="promotion-content">
+                  <button class="btn btn-primary">
+                    Ưu đãi dành cho HS & SV
+                  </button>
+                  <p>Đổi trả hàng trong vòng 7 ngày </p>
+                  <p>Freeship toàn quốc từ 250.000đ</p>
+                  <p> Sử dụng mỗi 3.000 BBxu để được giảm 10.000đ. Làm sao để lấy BBxu?</p>
+                  <p> Freeship nội thành Sài Gòn từ 150.000đ*. Chi tiết tại đây</p>
+                </div>
+              </div>
+             
+            </div>
+            
+          </div>
+        </div>
+        
+        <!--Grid column-->
+
+      </div>
+      <!--Grid row-->
+
+      <hr>
+
+      <!--Grid row-->
+      <div class="product-info" style="background-color: white; ">
+        <div class="product-view" style="padding: 20px">
+          <ul class="nav nav-tabs">
+            <li class="info-pro active"><a data-toggle="tab" href="#info-product">Thông tin sản phẩm</a></li>
+            <li class="tab-review" id="review"><a data-toggle="tab" href="#product-review" >Đánh giá</a></li>
+            
+          </ul>
+          <div class="tab-content product-grid-view mt-2">
+            <div id="info-product" class="tab-pane fade in active">
+              <table>
+                <tr>
+                  <td style="width: 300px">
+                    Mã sản phẩm
+                  </td>
+                  <td>
+                    {{ product.code }}
+                  </td>
+                </tr>
+                <tr>
+                  <td>Tên sản phẩm</td>
+                  <td>{{ product.name }}</td>
+                </tr>
+                <tr>
+                  <td>Tên nhà xuất bản</td>
+                  <td>{{ product.publisher }}</td>
+                </tr>
+              </table>
+              <hr>
+              <div class="product-description mt-2" style="position: relative;">
+                <div class="description" >
+                  <p>{{ product.description }}</p>
+                  <a href="javascript:void();" class="readmore-btn btn btn-primary">Read more</a>
+                </div>
+              </div>
+            </div>
+            <div id="product-review" class="tab-pane fade"> 
+              <div class="reviews-wrapper">
+                {% for review in product.reviews.all %}
+                  <div class="notification">
+                    <div class="user-review">
+                      <div class="item">
+                        <div class="user">
+                          <img src="{{ review.user.get_image }}" alt="" style="width: 24px; height: 24px;">
+                          <strong>{{ review.user.username }}</strong>
+                        </div>
+                        <div class="review" style="padding-left: 15px;">
+                          {{ review.content }}
+                          <div>
+                            <div>
+                              <strong>Star: </strong> {{ review.stars }}     
+                            </div>
+                            <div> 
+                              <strong>Date: </strong> {{ review.date_create|date:"Y-m-d"}} {{ review.date_create|time:"H:i" }} 
+                            </div>
+                          </div>
+                        </div>    
+                      </div>  
+                    </div>                
+                  </div>
+                {% empty %}
+                  <div class="notification">
+                    Chưa có đánh giá nào
+                  </div>
+                {% endfor %}
+              </div>
+              <div class="notification">
+                {% if request.user.is_authenticated %}
+                  <form action="" method="POST">
+                    {% csrf_token %}
+                    <div class="field">
+                      <label for="">Stars</label>
+                      <div class="control">
+                        <div class="select">
+                          <select name="stars" id="">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="field">
+                      <label for="">Content</label>
+                      <div class="control">
+                        <textarea name="content" id="" class="textarea form-control" name="content"></textarea>
+                      </div>
+                    </div>
+                    <div class="field">
+                      
+                      <div class="control pt-2">
+                        <button class="btn btn-success">Đánh giá</button>
+                      </div>
+                    </div>
+                  </form>
+                {% else %}
+                  <p><a href="{% url 'login' %}">Đăng nhập</a> để đánh giá sản phẩm</p>
+                {% endif %}
+              </div>
+              
+            </div>
+          </div>
+          
+        </div>
+      </div>
+      <div class="related-product">
+        <!--Grid column-->
+        {% if related_products %}
+        <div class="title" style="position: relative;">
+          <h4 class="my-4 h4" style="color: #F15C22; padding: 10px;">Sản phẩm liên quan</h4>
+        </div>
+        
+        <div class="related-product-item row mb-4">
+          {% for p in related_products %}
+            <div class="col-md-3">
+              <div class='item-container' style="position: relative;">
+                <a href="{% url 'productdetail' p.slug %}" class='product-item' style="text-decoration: None; color: black;">
+                    <div class="img-container" style="display: block;
+                    margin-left: auto;
+                    margin-right: auto; ">
+                        <img src="{{p.image.url}}" class='product-image clearfix'>
+                    </div>
+                    <div class="item-info" style="text-align: center;">
+                        <div class='product-name'>
+                            <span style="padding-top: 0px !important;
+                            line-height: 1.4em;
+                            white-space: normal;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            display: -webkit-box;
+                            -webkit-line-clamp: 2;
+                            -webkit-box-orient: vertical;
+                            min-height: 2.8em;
+                            max-height: 2.8em;
+                            font-size: 0.78em;
+                            color: #333333;
+                            font-size: 15px">{{p.name}}</span>
+                        </div>
+                        <div>
+                            {% if p.discount > 0 %}
+                                <span id="price_discount" style="color: #f7941e; font-size: 20px; font-weight: bold;">{{ p.price_discount }}</span>
+                                <del class='price'>{{p.price_sell}}₫</del>
+                            {% else %}
+                                <span class='price' style="color: #f7941e;font-size: 20px; font-weight: bold;">{{p.price_sell}}₫</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                </a>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+        {% else %}
+        <div class="mt-4"></div>
+        {% endif %}
+        <!--Grid column-->
+
+      </div>
+  
+
+    </div>
+  </main>
+</div>
+
+
+{% endblock %}
+
+{% block script %}
+
+<script>
+  var productapp = new Vue({
+      el: '#productapp',
+      delimeters: ['[[', ']]'],
+      store: store,
+      data () {
+          return {
+            mainImage: '{{ product.image.url }}',
+            images: [{{ imagesstring|safe }}]
+          }
+      },
+      mounted() {
+          console.log('Mounted');
+      },
+      methods: {
+          changeMainImage(image) {
+              this.mainImage = image;
+          },
+          addToCart(product_id) {
+              console.log('Product_id:', product_id);
+
+              var data = {
+                  'product_id': product_id, 
+                  'update': false,
+                  'quantity': 1
+              };
+                  
+              fetch('/api/add_to_cart/', {
+                  method: 'POST',
+                  headers: {
+                      'Content-Type': 'application/json',
+                      'X-CSRFToken': '{{ csrf_token }}'
+                  },
+                  credentials: 'same-origin',
+                  body: JSON.stringify(data)
+              })
+              .then((response) => {
+                  console.log(response)   
+                  store.commit('increment', 1);       
+              })
+              .catch(function (error) {
+                  console.log('Error 2');
+                  console.log(error);
+              })
+          }
+      }
+    });
+  </script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>
+    $(".readmore-btn").on('click', function(){
+      $(this).parent().toggleClass("showContent");
+      var replaceText = $(this).parent().hasClass("showContent") ? "Read Less" : "Read More";
+      $(this).text(replaceText);
+    })
+  </script>
+
+{% endblock %}

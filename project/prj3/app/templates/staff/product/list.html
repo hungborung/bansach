@@ -1,0 +1,109 @@
+{% extends "../base.html" %}
+
+{% block menu %} 
+  {% with page=1 %}
+    {{block.super}}
+  {% endwith %}
+{% endblock %}
+
+
+{% block content %}
+{% load humanize %}
+
+
+
+<style>
+.product-img {
+  width: 100px;
+}
+</style>
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0 text-dark">Product</h1>
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Product</li>
+            </ol>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <!-- Small boxes (Stat box) -->
+        <div class="row">
+          <a href='/staff/create-product' class="btn btn-primary mb-3">
+            <i class="fa fa-plus"></i>
+            Thêm</a>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th>Mã</th>
+                <th>Tên</th>
+                <th>Ảnh</th>
+                <th>Danh mục</th>
+                <th>Giảm giá</th>
+                <th>Giá bán</th>
+                <th>Ngày tạo</th>
+                <th>Ngày sửa</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for p in products %}
+              <tr>
+                <td>{{ p.code }}</td>
+                <td>{{ p.name }}</td>
+                <td>
+                  <img src="{{ p.image.url }}" alt="" class="product-img">
+                </td>
+                <td>
+                  {{ p.category.name }}
+                </td>
+                <td>{{ p.discount }}</td>
+                <td>{{ p.price_sell }}</td>
+                <td>{{ p.date_create }}</td>
+                <td>{{ p.date_update }}</td>
+                <td>
+                   <a href='{% url "update-product" p.id %}' style="text-decoration: none; margin-right: 15px;">
+                     <i class="fa fa-pencil-square-o"></i>
+                   </a>
+                   <a href="javascript:deleteProduct({{p.id}}) ">
+                     <i class="fa fa-trash" style="color: red;"></i>
+                   </a>
+                   </span>
+                </td>
+              </tr>
+              {% endfor %}
+              
+            </tbody>
+              
+          </table>
+          {% include '../pagination.html' with page=products %}
+          <span>(Total : {{total}} records)</span>
+          <!-- ./col -->
+          
+        </div>
+        <!-- /.row -->
+        
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <script>
+    function deleteProduct(id) {
+      if(confirm('Bạn có chắc chắn muốn xóa?')){
+        location.href = '/staff/delete-product/' + id;
+      }
+    }
+  </script>
+{% endblock %}
